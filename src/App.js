@@ -17,9 +17,10 @@ function App() {
   ]);
 
   const addExpenseHandler = (newExpenseData) => {
-    setUpdatedExpenseData((prevData) => {
-      return [newExpenseData, ...prevData];
-    });
+    setUpdatedExpenseData((prevData) => [newExpenseData, ...prevData]);
+    if (updatedExpenseData.length === filteredExpenseData.length) {
+      setFilteredExpenses((prevData) => [newExpenseData, ...prevData]);
+    }
   };
 
   const filterHandler = (selectedYear) => {
